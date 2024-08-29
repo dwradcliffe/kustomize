@@ -1162,7 +1162,7 @@ func (rn *RNode) GetValidatedMetadata() (ResourceMeta, error) {
 		// A list doesn't require a name.
 		return m, nil
 	}
-	if m.NameMeta.Name == "" {
+	if rn.getMetaStringField("generateName") == "" && m.NameMeta.Name == "" {
 		return m, fmt.Errorf("missing metadata.name in object %v", m)
 	}
 	return m, nil
